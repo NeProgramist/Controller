@@ -1,7 +1,8 @@
-package com.agb.controller
+package com.agb.controller.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.agb.controller.R
 
 class MainActivity : AppCompatActivity() {
 
