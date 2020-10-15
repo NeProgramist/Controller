@@ -1,0 +1,28 @@
+package com.agb.controller.framework.datasource.remote
+
+import com.agb.controller.framework.datasource.remote.api.FlatsApi
+import com.agb.core.data.FlatsDataSource
+import com.agb.core.domain.model.Flat
+import io.reactivex.rxjava3.core.Single
+import io.reactivex.rxjava3.schedulers.Schedulers
+
+class FlatsRemoteDataSource(
+    private val api: FlatsApi
+): FlatsDataSource {
+    override fun getFlats(): Single<List<Flat>> = Single.create {
+        api.getFlats().subscribeOn(Schedulers.io()).subscribe({ flats ->
+            if (flats.success) it.onSuccess(flats.value)
+            else it.onError(Throwable("can't get flats"))
+        }, { er ->
+            it.onError(er)
+        })
+
+    }
+
+    override fun addFlat(flat: Flat): Single<Flat> = Single.create {
+        api.addFlat(flat).doOnSuccess { flat ->
+            if (flat.success) it.onSuccess(flat.value)
+            else it.onError(Throwable("can't add flat"))
+        }
+    }
+}
