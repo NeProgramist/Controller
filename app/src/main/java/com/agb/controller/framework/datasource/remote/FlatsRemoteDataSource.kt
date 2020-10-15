@@ -16,13 +16,14 @@ class FlatsRemoteDataSource(
         }, { er ->
             it.onError(er)
         })
-
     }
 
     override fun addFlat(flat: Flat): Single<Flat> = Single.create {
-        api.addFlat(flat).doOnSuccess { flat ->
+        api.addFlat(flat).subscribeOn(Schedulers.io()).subscribe({ flat ->
             if (flat.success) it.onSuccess(flat.value)
             else it.onError(Throwable("can't add flat"))
-        }
+        }, { er ->
+            it.onError(er)
+        })
     }
 }
