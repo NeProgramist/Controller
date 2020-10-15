@@ -8,21 +8,70 @@
     android:gravity="center"
     tools:context=".ui.login.LoginFragment">
 
-    <EditText
-        android:id="@+id/username_edt"
-        android:hint="username"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-    <EditText
-        android:id="@+id/password_edt"
-        android:hint="password"
-        android:inputType="textPassword"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:textColor="@color/login_txt_color"
+            android:textSize="@dimen/hint_txt_size"
+            android:text="@string/name_txt" />
+
+        <EditText
+            android:id="@+id/username_edt"
+            android:layout_width="@dimen/block_width"
+            android:layout_height="@dimen/input_height"
+            android:background="@drawable/input_background"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/name_hint"
+            android:textColorHint="@color/hintColor"
+            android:paddingStart="@dimen/input_padding"
+            android:textSize="@dimen/hint_txt_size" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/pass_txt"
+            android:textColor="@color/login_txt_color"
+            android:textSize="@dimen/hint_txt_size" />
+
+        <EditText
+            android:id="@+id/password_edt"
+            android:layout_width="@dimen/block_width"
+            android:layout_height="@dimen/input_height"
+            android:background="@drawable/input_background"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/pass_hint"
+            android:textColorHint="@color/hintColor"
+            android:paddingStart="@dimen/input_padding"
+            android:textSize="@dimen/hint_txt_size" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/log_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="@dimen/block_width"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/button_txt"
+        android:textAllCaps="false"
+        android:textSize="@dimen/button_txt_size"
+        android:textColor="@color/colorSecondary" />
 </LinearLayout>
