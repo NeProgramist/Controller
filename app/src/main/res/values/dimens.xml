@@ -3,7 +3,13 @@
     <dimen name="block_width">273dp</dimen>
     <dimen name="button_height">48dp</dimen>
     <dimen name="input_height">42dp</dimen>
-    <dimen name="input_padding">20dp</dimen>
+    <dimen name="block_padding">20dp</dimen>
     <dimen name="hint_txt_size">16dp</dimen>
     <dimen name="button_txt_size">18dp</dimen>
+    <dimen name="toolbar_height">64dp</dimen>
+    <dimen name="toolbar_txt_size">24dp</dimen>
+    <dimen name="toolbar_btn_wdth">48dp</dimen>
+    <dimen name="toolbar_btn_hgth">38dp</dimen>
+    <dimen name="dialog_txt_size">18dp</dimen>
+    <dimen name="rv_item_height">65dp</dimen>
 </resources>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Controller</string>
+    <string name="name_hint">Your name</string>
+    <string name="pass_hint">Enter a password</string>
+    <string name="name_txt">Name:</string>
+    <string name="pass_txt">Password:</string>
+    <string name="button_txt">Continue</string>
+    <string name="toolbar_txt">List of flats</string>
+    <string name="home_menu">Home</string>
+    <string name="settings_menu">Settings</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_add_flat">add a new flat</string>
+    <string name="dialog_street_txt">Street:</string>
+    <string name="dialog_street_edt">Name of your street</string>
+    <string name="dialog_flat_txt">Flat number:</string>
+    <string name="dialog_flat_edt">Your flat number</string>
+    <string name="dialog_add_btn">Add</string>
 </resources>
