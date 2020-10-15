@@ -9,14 +9,14 @@ import com.agb.core.domain.model.Flat
 import kotlinx.android.synthetic.main.flat.view.*
 
 class FlatsAdapter(
-//    private val onItemClick: OnItemClickListener
+    private val onItemClick: OnItemClickListener
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var flatsHolder = ArrayList<Flat>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val item = layoutInflater.inflate(R.layout.flat, parent, false)
-        return FlatViewHolder(item)
+        return FlatViewHolder(item, onItemClick)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -46,11 +46,15 @@ class FlatsAdapter(
 
     inner class FlatViewHolder(
         private val item: View,
-//        private val onItemClick: OnItemClickListener
+        private val onItemClick: OnItemClickListener
     ): RecyclerView.ViewHolder(item) {
         fun bind(flat: Flat) {
-            item.flat_name_txt.text = flat.name
-            item.flat_address_txt.text = flat.address
+            item.flat_address_txt.text = flat.name
+            item.flat_flat_txt.text = flat.address
+
+            item.setOnClickListener {
+                onItemClick.onClickListener(flatsHolder[adapterPosition].id)
+            }
         }
     }
 

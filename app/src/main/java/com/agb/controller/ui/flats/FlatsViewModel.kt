@@ -8,6 +8,7 @@ import com.agb.core.domain.interactor.AddFlatUseCase
 import com.agb.core.domain.interactor.GetFlatsUseCase
 import com.agb.core.domain.model.Flat
 import com.agb.core.common.Result
+import com.agb.core.domain.model.Room
 import com.agb.core.domain.repository.flats.FlatsRepositoryImpl
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 
@@ -30,19 +31,38 @@ class FlatsViewModel : ViewModel() {
             )
     }
 
-    fun addFlat() {
-        val mock = Flat(0, "405", "Some where in the space")
+    fun addFlat(data: Flat) {
         AddFlatUseCase(
             FlatsRepositoryImpl(
                 FlatsRemoteDataSource(
                     FlatsApi()
                 )
             )
-        )(mock)
+        )(data)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { flat.value = Result.success(it) },
-                { flats.value = Result.error(it) }
+                { flat.value = Result.error(it) }
             )
+    }
+
+    fun getRooms(flatId: Int) {
+
+    }
+
+    fun getRoom(roomId: Int) {
+
+    }
+
+    fun addRoom(room: Room) {
+
+    }
+
+    fun changeRoom(room: Room) {
+
+    }
+
+    fun deleteRoom(roomId: Int) {
+
     }
 }
