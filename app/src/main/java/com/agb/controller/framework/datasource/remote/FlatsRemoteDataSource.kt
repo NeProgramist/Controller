@@ -12,7 +12,7 @@ class FlatsRemoteDataSource(
     override fun getFlats(): Single<List<Flat>> = Single.create {
         api.getFlats().subscribeOn(Schedulers.io()).subscribe({ flats ->
             if (flats.success) it.onSuccess(flats.value)
-            else it.onError(Throwable("can't get flats"))
+            else it.onError(Throwable(flats.error.errorCode))
         }, { er ->
             it.onError(er)
         })
@@ -21,7 +21,7 @@ class FlatsRemoteDataSource(
     override fun addFlat(flat: Flat): Single<Flat> = Single.create {
         api.addFlat(flat).subscribeOn(Schedulers.io()).subscribe({ flat ->
             if (flat.success) it.onSuccess(flat.value)
-            else it.onError(Throwable("can't add flat"))
+            else it.onError(Throwable(flat.error.errorCode))
         }, { er ->
             it.onError(er)
         })

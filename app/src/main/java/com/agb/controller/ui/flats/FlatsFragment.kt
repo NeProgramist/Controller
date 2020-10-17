@@ -1,29 +1,32 @@
 package com.agb.controller.ui.flats
 
-import android.content.Intent
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.agb.controller.R
-import com.agb.controller.framework.datasource.remote.api.FlatsApi
+import com.agb.controller.ui.rooms.NewRoomFragment
+import com.agb.controller.ui.rooms.PassRoomContract
+import com.agb.controller.ui.rooms.RoomsFragment
 import com.agb.core.common.Result
 import com.agb.core.common.Status
 import com.agb.core.domain.model.Flat
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import kotlinx.android.synthetic.main.dialog_new_flat.*
+import com.agb.core.domain.model.Room
 import kotlinx.android.synthetic.main.flats_fragment.*
 
-class FlatsFragment : Fragment(), PassFlatContract, FlatsAdapter.OnItemClickListener {
+class FlatsFragment :
+    Fragment(),
+    PassFlatContract,
+    FlatsAdapterSeparated.OnItemClickListener {
     private lateinit var viewModel: FlatsViewModel
-    private lateinit var flatsAdapter: FlatsAdapter
+    private lateinit var flatsAdapter: FlatsAdapterSeparated
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,10 +38,11 @@ class FlatsFragment : Fragment(), PassFlatContract, FlatsAdapter.OnItemClickList
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        flatsAdapter = FlatsAdapter(this)
+        flatsAdapter = FlatsAdapterSeparated(this)
         viewModel = ViewModelProvider(this).get(FlatsViewModel::class.java)
         viewModel.flats.observe(viewLifecycleOwner, flatsObserver)
         viewModel.flat.observe(viewLifecycleOwner, flatObserver)
+
 
         flat_rv.adapter = flatsAdapter
         flat_rv.layoutManager = LinearLayoutManager(activity)
@@ -75,7 +79,18 @@ class FlatsFragment : Fragment(), PassFlatContract, FlatsAdapter.OnItemClickList
     }
 
     override fun onClickListener(id: Int) {
-        viewModel.getRoom(id)
+        activity?.let {
+            val ft = it.supportFragmentManager.beginTransaction()
+            val fragment = RoomsFragment()
+            val name = fragment.javaClass.name
+            val args = Bundle()
+            args.putInt("id", id)
+
+            fragment.arguments = args
+            ft.replace(R.id.rv_container, fragment)
+            ft.addToBackStack(name)
+            ft.commitAllowingStateLoss()
+        }
     }
 
     private val flatsObserver = Observer<Result<List<Flat>>> { flats ->
@@ -85,5 +100,4 @@ class FlatsFragment : Fragment(), PassFlatContract, FlatsAdapter.OnItemClickList
     private val flatObserver = Observer<Result<Flat>> { flat ->
         flat.data?.let { if (flat.status == Status.SUCCESS) flatsAdapter.addFlat(it) }
     }
-
 }
