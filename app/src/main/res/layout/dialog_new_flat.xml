@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="20dp"
+    tools:context=".ui.flats.NewFlatFragment">
+
+    <TextView
+        android:text="@string/dialog_add_flat"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/dialog_txt_size"
+        android:textColor="@color/header_txt_color"
+        android:textAllCaps="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginVertical="5dp"
+            android:textColor="@color/descriptor_txt_color"
+            android:textSize="@dimen/hint_txt_size"
+            android:text="@string/dialog_street_txt" />
+
+        <EditText
+            android:id="@+id/dialog_street_edt"
+            android:layout_width="@dimen/block_width"
+            android:layout_height="@dimen/input_height"
+            android:background="@drawable/dialog_input_background"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/dialog_street_edt"
+            android:textColorHint="@color/hintColor"
+            android:paddingStart="@dimen/block_padding"
+            android:textSize="@dimen/hint_txt_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/dialog_flat_txt"
+            android:textColor="@color/descriptor_txt_color"
+            android:textSize="@dimen/hint_txt_size" />
+
+        <EditText
+            android:id="@+id/dialog_flat_edt"
+            android:layout_width="@dimen/block_width"
+            android:layout_height="@dimen/input_height"
+            android:background="@drawable/dialog_input_background"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/dialog_flat_edt"
+            android:textColorHint="@color/hintColor"
+            android:paddingStart="@dimen/block_padding"
+            android:textSize="@dimen/hint_txt_size"
+            android:inputType="number"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/dialog_add_btn"
+        android:layout_width="@dimen/block_width"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/dialog_add_btn"
+        android:textAllCaps="false"
+        android:textSize="@dimen/button_txt_size"
+        android:textColor="@color/colorSecondary" />
+
+</LinearLayout>
