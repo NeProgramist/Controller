@@ -7,4 +7,5 @@
     <color name="buttonColor">#789DB2</color>
     <color name="header_txt_color">#456171</color>
     <color name="dialogInputColor">#F2F7F8</color>
+    <color name="deleteBtnTxtColor">#B4C3CC</color>
 </resources>

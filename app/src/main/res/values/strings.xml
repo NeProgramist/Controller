@@ -16,4 +16,11 @@
     <string name="dialog_flat_txt">Flat number:</string>
     <string name="dialog_flat_edt">Your flat number</string>
     <string name="dialog_add_btn">Add</string>
+    <string name="dialog_room_txt">Room name:</string>
+    <string name="dialog_room_edt">Name</string>
+    <string name="dialog_add_room">add a room</string>
+    <string name="dialog_change_txt">edit a room</string>
+    <string name="dialog_new_room_txt">New room name:</string>
+    <string name="dialog_change_btn">Change</string>
+    <string name="dialog_delete_btn">Delete</string>
 </resources>
