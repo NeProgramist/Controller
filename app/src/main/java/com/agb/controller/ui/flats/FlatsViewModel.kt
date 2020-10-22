@@ -2,6 +2,7 @@ package com.agb.controller.ui.flats
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.agb.controller.framework.App
 import com.agb.controller.framework.datasource.remote.FlatsRemoteDataSource
 import com.agb.controller.framework.datasource.remote.RoomsRemoteDataSource
 import com.agb.controller.framework.datasource.remote.api.FlatsApi
@@ -25,7 +26,7 @@ class FlatsViewModel : ViewModel() {
         GetFlatsUseCase(
             FlatsRepositoryImpl(
                 FlatsRemoteDataSource(
-                    FlatsApi()
+                    App.FlatsApi
                 )
             )
         )()
@@ -40,7 +41,7 @@ class FlatsViewModel : ViewModel() {
         AddFlatUseCase(
             FlatsRepositoryImpl(
                 FlatsRemoteDataSource(
-                    FlatsApi()
+                    App.FlatsApi
                 )
             )
         )(data)
