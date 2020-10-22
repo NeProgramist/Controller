@@ -2,6 +2,7 @@ package com.agb.controller.ui.rooms
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.agb.controller.framework.App
 import com.agb.controller.framework.datasource.remote.RoomsRemoteDataSource
 import com.agb.controller.framework.datasource.remote.api.RoomsApi
 import com.agb.core.common.Result
@@ -53,7 +54,7 @@ class RoomsViewModel : ViewModel() {
         ChangeRoomUseCase(
             RoomsRepositoryImpl(
                 RoomsRemoteDataSource(
-                    RoomsApi()
+                    App.RoomsApi
                 )
             )
         )(data)
@@ -68,7 +69,7 @@ class RoomsViewModel : ViewModel() {
         DeleteRoomUseCase(
             RoomsRepositoryImpl(
                 RoomsRemoteDataSource(
-                    RoomsApi()
+                    App.RoomsApi
                 )
             )
         )(roomId)
